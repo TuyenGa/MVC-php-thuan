@@ -2,6 +2,7 @@
 require_once "Models/Model.php";
     class SinhVienModel extends Model
     {
+        public $result = null;
         public function __construct()
         {
             parent::__construct();
@@ -9,7 +10,7 @@ require_once "Models/Model.php";
         public function dssv()
         {
             
-            $sql = "SELECT * FROM `Dssv` Order by `Dssv`.age ASC";
+            $sql = "SELECT * FROM `Dssv`";
             $result = $this->connect->query($sql);
             
             $lists = array();
@@ -28,7 +29,8 @@ require_once "Models/Model.php";
         public function created($post)
         {
             $sql = "INSERT INTO `Dssv` (`id`, `name`, `age`, `address`) VALUES (NULL, '".$post['name']."', '".$post['age']."', '".$post['address']."');";
-            $this->connect->query($sql);
+            $kq = $this->connect->query($sql);
+            return ;
         }
         public function edited($id)
         {
